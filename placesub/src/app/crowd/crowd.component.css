@@ -1,0 +1,5 @@
+.nav-link:focus, .nav-item:focus {
+  outline: none;
+}
+
+

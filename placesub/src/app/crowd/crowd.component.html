@@ -1,0 +1,87 @@
+<div class="container-fluid" style="background-color: white; height: 100vh;">
+  <div class="row">
+    <div class="col-md-5" style="padding: 10px 30px;">
+      <h1><clr-icon shape="video-camera" class="is-solid" size="35" style="margin-top: -5px; color: #00B7D6"></clr-icon>&nbsp; <b>PlaceSub</b></h1>
+      <h4>I want to &nbsp;
+        <select id="exampleSelect1" (change)="onViewChange($event)">
+          <option value="Shop">shop </option>
+          <option value="Restaurant">dine </option>
+          <option value="Work">work / study </option>
+          <option value="Gym">gym </option>
+        </select> &nbsp; at &nbsp; <input type="text" placeholder="near me">.</h4>
+      <br><br>
+      <clr-tabs>
+        <clr-tab>
+          <button clrTabLink>Legend</button>
+          <clr-tab-content *clrIfActive>
+            <br>
+            <img src="../../assets/green.png" width=30> &nbsp; 0 - 50% occupancy<br>
+            <img src="../../assets/yellow.png" width=30> &nbsp; 50 - 90% occupancy<br>
+            <img src="../../assets/red.png" width=30> &nbsp; 90 - 100% occupancy<br>
+            <br>
+            <b>Note:</b>
+            <ul>
+              <ol>Subscriptions and queues expire in 5 hours if not triggered or cancelled.</ol>
+            </ul>
+          </clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+          <button clrTabLink>Subscriptions</button>
+          <clr-tab-content *clrIfActive="true">
+            <div class="card">
+              <div class="card-block">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-11">
+                      <h3 style="margin: 0 0; padding: 0 0;">Aerial Artique</h3>
+                      <p style="margin: 0 0; padding: 0 0;">Time Lapsed: 0 min</p>
+                    </div>
+                    <div class="col-md-1">
+                      <clr-icon shape="times" size="30"></clr-icon>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+          <button clrTabLink>Queues</button>
+          <clr-tab-content *clrIfActive="true">
+            <div class="card">
+              <div class="card-block">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-11">
+                      <h3 style="margin: 0 0; padding: 0 0;">Extreme Pizza</h3>
+                      <p style="margin: 0 0; padding: 0 0;">Q Number: 6<br>Estimated Wait Time: 25 mins</p>
+                    </div>
+                    <div class="col-md-1">
+                      <clr-icon shape="times" size="30"></clr-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+          <button clrTabLink id="link1">Activity Feed</button>
+          <clr-tab-content id="content1" *clrIfActive="true" >
+            <div class="card" *ngFor="let feed of feeds">
+              <div class="card-block">
+                {{ feed['body'] }}
+              </div>
+            </div>
+          </clr-tab-content>
+        </clr-tab>
+      </clr-tabs>
+
+    </div>
+    <div class="col-md-7" style="padding-right: 0px; margin-right: 0px;">
+      <app-map [locations]="locations" *ngIf="!updateLayers" (subscribeUp)="subscribeUp()"></app-map>
+    </div>
+  </div>
+</div>
